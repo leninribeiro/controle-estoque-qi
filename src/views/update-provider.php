@@ -1,6 +1,13 @@
 <?php
 require_once "../models/provider.php";
 
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('location:/controle-estoque-qi/');
+}
+
+
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 
 if (empty($id)) {

@@ -1,5 +1,12 @@
 <?php
 require_once('../models/provider.php');
+
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('location:/controle-estoque-qi/');
+}
+
 $prov = new Provider();
 $providerList = $prov->listAll();
 

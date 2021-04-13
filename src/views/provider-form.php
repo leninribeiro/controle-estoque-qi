@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('location:/controle-estoque-qi/');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

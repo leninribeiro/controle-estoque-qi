@@ -1,5 +1,12 @@
 <?php
 require_once('../models/product.php');
+
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('location:/controle-estoque-qi/');
+}
+
 $prod = new Product();
 $productList = $prod->listAll();
 

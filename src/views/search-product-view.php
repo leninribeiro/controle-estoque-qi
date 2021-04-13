@@ -1,6 +1,13 @@
 <?php
 require_once('../models/product.php');
 
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('location:/controle-estoque-qi/');
+}
+
+
 $search_arg = isset($_POST['search_args']) ? $_POST['search_args'] : null;
 $arg_value = isset($_POST['arg_value']) ? $_POST['arg_value'] : null;
 
