@@ -74,6 +74,36 @@ class Product
         }
     }
 
+    function getByProviderName($provider_name) {
+        $conn = db_connection();
+        $sql = 'SELECT id,brand,model,color,price,manufactured_at,
+            created_at,name,telephone,street,adr_number,city,state,cep 
+            FROM products as p1 INNER JOIN providers as p2 
+            ON p1.provider_id = p2.provider_id WHERE p2.name = :name
+            ORDER BY id';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":name", $provider_name);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    function getByID($id) {
+        $conn = db_connection();
+        $sql = "SELECT id,brand,model,color,price,manufactured_at,
+        created_at,name,telephone,street,adr_number,city,state,cep 
+        FROM products as p1 INNER JOIN providers as p2 
+        ON p1.provider_id = p2.provider_id WHERE p1.id = :id 
+        ORDER BY id";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     function get()
     {
         $conn = db_connection();

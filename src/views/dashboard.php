@@ -24,6 +24,7 @@ if (!isset($_SESSION['username'])) {
         <div class="row">
             <div class="col justify-content-center">
                 <a href="./list-products.php" class="btn btn-secondary mb-3">Listar produtos</a><br>
+                <a href="./search-product.php" class="btn btn-secondary mb-3">Pesquisar produtos</a><br>
                 <a href="./list-providers.php" class="btn btn-secondary">Listar fornecedores</a>
             </div>
             <div class="col justify-content-center">
